@@ -1,0 +1,44 @@
+<div>
+<select  class="form-select" aria-label="Default select example" [ngModel]="selectedDeviceObj"  (ngModelChange)="onChange($event)"  >
+    <option value ="default" selected>Open this select menu</option>
+    <option [ngValue]="val.email" *ngFor="let val of details">{{val.email}}</option>
+</select>
+<button (click)="showDeatils()"> check</button>
+</div>
+
+<table cTable>
+    <thead>
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col"> Name </th>
+    <th scope="col">E-mail </th>
+    <th scope="col"> Mobile number </th>
+    <th scope="col"> Technology </th>
+    <th scope="col"> Action </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let val of details"  [hidden]="flag">
+    <th scope="row">1</th>
+    <td><span>{{val.uname}}</span></td>
+    <td><span>{{val.email}}</span></td>
+    <td><span>{{val.number}}</span></td>
+    <td><span>{{val.technology}}</span></td>
+    <td> 
+        <button type="button" class="btn btn-secondary" (click)="doDelete(val.email)">Delete</button>
+    </td>
+    </tr>
+</tbody>
+<tbody  *ngIf="selectedDeviceObj == 'default'">
+    <tr *ngFor="let val of Data">
+    <th scope="row">1</th>
+    <td><span>{{val.uname}}</span></td>
+    <td><span>{{val.email}}</span></td>
+    <td><span>{{val.number}}</span></td>
+    <td><span>{{val.technology}}</span></td>
+    <td> 
+        <button type="button" class="btn btn-secondary" (click)="doDelete(val.email)">Delete</button>
+    </td>
+    </tr>
+</tbody>
+    </table>

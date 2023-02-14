@@ -1,0 +1,31 @@
+<form #userForm="ngForm" (ngSubmit)="showData()">
+  {{ userForm.value | json }}
+<div class="container">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text" class="form-control"  #name="ngModel" [(ngModel)]="userModel.uname" [class.is-invalid]="name.invalid && name.untouched" placeholder="Username"  name="uname"aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched"> Hey Please enter your name </small>
+      
+      <div class="input-group mb-3">
+        <input type="email" #email="ngModel" class="form-control" name="email" [(ngModel)]="userModel.email" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2">@example.com</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="text" #number="ngModel" pattern="^\d{10}$"   [class.is-invalid]="number.invalid && number.touched" class="form-control"  name="number" [(ngModel)]="userModel.number" placeholder="Recipient Number" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2">+91***********</span>
+      </div>
+      <small class="text-danger"[class.d-none]="number.valid || number.untouched"> Please enter a valid number </small>
+      <div class="input-group mb-3">
+      <select (blur)="validateSelect(tech.value)" (click)="validateSelect(tech.value)" class="form-select" #tech="ngModel"  [class.is-invalid]="techhasError && tech.touched" aria-label="Default select example" [(ngModel)]="userModel.technology"  name="technology">
+         <option selected value="default">Open the menu to select</option>
+         <option  *ngFor="let tech of technology" >{{tech}}</option>
+      </select>
+      </div>
+      <small class="text-danger"[class.d-none]="!techhasError || tech.untouched"> Please select a Technology </small>
+      <div class="container1">
+        <button [disabled]="userForm.form.valid || techhasError"> Submit</button>
+       </div>
+</div>
+</form>

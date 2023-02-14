@@ -1,0 +1,26 @@
+.box{
+    width: inherit;
+    height: inherit;
+
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.info
+{
+    width: 800px;
+    height: 600px;
+    background-color: aquamarine;
+    padding: 50px;
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+.show{
+    width: 800px;
+    height: 600px;
+    background-color: aquamarine;
+    padding: 50px;
+    margin-top: 20px;
+    margin-right: 100px;
+}
